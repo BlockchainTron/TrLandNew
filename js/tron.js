@@ -1,6 +1,7 @@
-let CONTRACT_ADDRESS = "TSDEHvyhcHoTauvgfUqJW7cY22uJ3zYc6D";
+let CONTRACT_ADDRESS = "TBhgLbU2qhg2GcnuzteKuD9GK7uiTEQtPk";
 let CONTRACT_ADDRESS_2 = "TYkPeZXGu5NESjqMkPJA8M9Drr51P6SrKr";
 let STATISTIC = "//dappcall.com:4141/statistic";
+let TOTAL_INVEST = "//dappcall.com:4141/total_invest";
 let nodeUrl = "https://api.trongrid.io";
 let currentAccount;
 let dividents = [4, 16, 62, 220, 680, 1400];
@@ -25,7 +26,12 @@ setInterval(function(){
 function updateData(){
     tronWebJS.trx.getBalance(CONTRACT_ADDRESS).then(balance => {
         balance = Math.floor(balance / Math.pow(10, 6));
-        $('#balance').html(format_number(balance) + ' TRX');
+        
+        $.get(TOTAL_INVEST, function(withdraw) {
+            $('#balance').html(format_number(parseFloat(balance+withdraw.total).toFixed(0)) + ' TRX');
+        }).fail(function() {
+            $('#balance').html(format_number(balance) + ' TRX');    
+        });;
     });
     
     tronWebJS.contract().at(CONTRACT_ADDRESS).then(contract => {
