@@ -1,7 +1,7 @@
 let CONTRACT_ADDRESS = "TBhgLbU2qhg2GcnuzteKuD9GK7uiTEQtPk";
 let CONTRACT_ADDRESS_2 = "TVxGy1RJrixzy9WUB1anFiZ9iLfyAHDz8D";
-let STATISTIC = "//dappcall.com:4141/statistic";
-let TOTAL_INVEST = "//dappcall.com:4141/total_invest";
+let STATISTIC = "https://dappcall.com/statistic";
+let TOTAL_INVEST = "https://dappcall.com/total_invest";
 let nodeUrl = "https://api.trongrid.io";
 let currentAccount;
 let dividents = [4, 16, 62, 220, 680, 1400];
@@ -327,7 +327,7 @@ $('#button_transfers').on('click', function(){
                     amount = Math.floor(data.txs[currentAccount][i]['call_value']);
                 }
                 
-                let less0part = (data.txs[currentAccount][i]['call_value'] * 100) % 100;
+                let less0part = Math.floor(data.txs[currentAccount][i]['call_value'] * 100) % 100;
                 if(less0part < 10) less0part = ''+0+less0part;
                 history_table = '<tr>'+
                                 '   <td class="text-left">'+getDateTime(data.txs[currentAccount][i]['timestamp'])+'</td>'+
@@ -359,7 +359,7 @@ function format_number(number){
     let result = "";
     for(let i = str_number_last_pos; i >= 0; i--){
         if((str_number_last_pos - i) % 3 == 0 && i != str_number_last_pos)
-            result = "." + result;
+            result = "," + result;
         result = number.toString()[i] + result;
     }
     return result;
