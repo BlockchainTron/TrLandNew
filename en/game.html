@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Create your plantation, develop it and get cryptocurrency Tron every day!">
+    <meta name="keywords" content="tron, land, tron land, smart, contract, investment, throne, tron, coin, trx, game, strategy, earnings on the Internet, passive income, investors, investment fund, income, finance, freebies, simple earnings, how to make money on the Internet, rates, bet, bet, smart contract, cryptocurrency, bounty, bitcoin, bitcoin, money, easy money, mmm, mlm, dice2win, eosbet, mmm3eth, easy invest, iz invest, 333eth, gorgona, investment fund, financial pyramid">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../js/slick/slick.css">
+    <link rel="stylesheet" href="../js/slick/slick-theme.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/media.css">
+    <link rel="shortcut icon" href="../img/favico.ico" type="image/x-icon">
+    <title>TRONLAND&#169; - Economic strategy based on Tron Network</title>
+</head>
+
+<body class="game_page">
+
+    <div class="modalContent" id="history">
+        <div class="content_history text-center">
+            <div class="close_btn" onclick="$('#history').hide()"><img src="../img/close.png" alt=""></div>
+            <h3>Transaction history</h3>
+            <div class="text-center">
+                <div class="tab_inf">
+                    Total deposit<br>
+                    <span id="transfers_popol_sum">0 TRX</span>
+                </div>
+                <div class="tab_inf">
+                    Total paid<br>
+                    <span id="transfers_vivod_sum">0 TRX</span>
+                </div>
+            </div>
+            <div class="table_scroll2">
+            <table class="his_table" id="history_table">
+                    <tr>
+                            <th class="text-left">Time</th>
+                            <th>№ transaction</th>
+                            <th class="text-right">Total</th>
+                        </tr>
+            </table>
+        </div>
+        </div>
+    </div>
+    <div class="modalContent" id="vivod" style="display:none;">
+        <div class="content_history text-center">
+            <div class="close_btn" onclick="$('#vivod').hide()"><img src="../img/close.png" alt=""></div>
+            <h3>Withdrawal</h3>
+            <div class="text-center">
+                <div class="tab_inf">
+                   Available for withdrawal<br>
+                    <span id="vivod_balance">0</span> <i><img src="../img/icon/ico_money.png" alt=""></i> 
+                </div>
+                <p class="text_modal">
+                You can withdraw these funds at any time, 
+                they also can be invested in the development of your plantation, 
+                if you don't have enough funds in the treasury
+                </p>
+                <div class="course_block text-center">
+                    <span>Coin rate:</span>
+                    <p class="item_course">
+                        1 TRX = 25 <i><img src="../img/icon/ico_money.png" alt=""></i>
+                    </p>
+                </div>
+                <div class="text-center mb-5">
+                    <img src="../img/lk/st5.png" alt="">
+                </div>
+                <div class="inp_block text-center">
+                    <span>Coins:</span>
+                    <input type="text" class="value_inp" value="2500" id="input_withdraw">
+                    <br><span id="withdraw_error_field" style="display:none;color:red;">Lack of available coins balance</span>
+                </div>
+                <button class="btn_modal" id="button_withdraw">
+                    Withdraw <span>100</span> TRX
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="modalContent" id="popol" style="display:none;">
+        <div class="content_history text-center">
+            <div class="close_btn" onclick="$('#popol').hide()"><img src="../img/close.png" alt=""></div>
+            <h3>Buy Coins</h3>
+            <div class="text-center">
+                <div class="tab_inf">
+                    On your account<br>
+                    <span id="user_balance">0</span> TRX 
+                </div>
+                <p class="text_modal">
+                    These funds can be spent on purchase of new plantation.
+                </p>
+                <div class="course_block text-center">
+                    <span>Coin rate:</span>
+                    <p class="item_course">
+                        1 TRX = 25 <i><img src="../img/icon/ico_money.png" alt=""></i>
+                    </p>
+                </div>
+                <div class="text-center mb-5">
+                    <img src="../img/lk/st8.png" alt="">
+                </div>
+                <div class="inp_block text-center">
+                    <span>TRX:</span>
+                    <input type="text" class="value_inp" value="100" id="input_buy">
+                    <br><span id="buy_error_field" style="display:none;color:red;">Lack of TRX balance on the wallet</span>
+                </div>
+                <button class="btn_modal" id="button_buy">
+                    Top up on <span>2500</span> <i><img src="../img/icon/ico_money.png" alt=""></i>
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="modalContent" id="no_tronweb" style="display:none;">
+        <div class="content_history text-center">
+            <div class="close_btn" onclick="$('#no_tronweb').hide()"><img src="../img/close.png" alt=""></div>
+            <h3>Log in</h3>
+            <div class="text-center">
+                <div class="text_modal">
+                 For PC <a href="https://chrome.google.com/webstore/detail/tronpay/gjdneabihbmcpobmfhcnljaojmgoihfk" target="_blank">TronPay</a> or <a href="https://chrome.google.com/webstore/detail/tronlink/ibnejdfjmmkpcnlpebklmnkoeoihofec" target="_blank">TronLink</a> browser add-in required<br>
+                <br>
+                Please log in to the required add-in.<br><br>
+                To play on smartphone please download <a href="https://apple.co/2AW9iX2" target="_blank">TronWallet [iOS]</a> or <a href="https://goo.gl/aGVd5T" target="_blank">TronWallet [Android]</a> depending on your smartphone.<br>
+                <br> Via the embedded browser go to https://tronland.online<br><br><br><br><br><br><br><br><br><br><br>
+                If you have any questions with the launch, please Ask in our <a href="https://tele.click/tronland_chat_en" target="_blank">Telegram</a> or <a href="https://discord.gg/8NR5qRp" target="_blank">Discord</a> chat.
+                </div>
+                <button class="btn_modal" id="auth_ok">
+                    OK
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <div class="modalContent" id="rise">
+        <div class="content_history text-center">
+            <div class="close_btn" onclick="$('#rise').hide()"><img src="../img/close.png" alt=""></div>
+            <h3>Purchase of rice plantation </h3>
+            <div class="text-center">
+                <div class="tab_inf">
+                    Overall balance<br>
+                    <span id="plant_user_balance_0" name="plant_user_balance">0</span> <i><img src="../img/icon/ico_money.png" alt=""></i> 
+                </div>
+                <p class="text_modal">
+                        Rice is a very valuable product for the most part of the population of our planet. It is the main food-stuff from Japanese and pacific ocean islands to Arabian and African countries. 
+                    </p>
+                <div class="text-center mb-5">
+                    <img src="../img/plant/ris.png" alt="">
+                </div>
+                <div class="inp_block text-center">
+                    <span>Amount:</span>
+                    <input type="text" class="value_inp" value="1" name="plant_input" id="plant_input_0">
+                    <br><span id="plant_error_field_0" style="display:none;color:red;">Lack of coins balance</span>
+                </div>
+                <button class="btn_modal" id="plant_button_0" name="button_plant_tron">
+                    Buy for <span>3.000</span><i><img src="../img/icon/ico_money.png" alt=""></i>
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="modalContent" id="phen">
+        <div class="content_history text-center">
+            <div class="close_btn" onclick="$('#phen').hide()"><img src="../img/close.png" alt=""></div>
+            <h3>Purchase of wheat field </h3>
+            <div class="text-center">
+                <div class="tab_inf">
+                    Overall balance<br>
+                    <span id="plant_user_balance_1" name="plant_user_balance">0</span> <i><img src="../img/icon/ico_money.png" alt=""></i>
+                </div>
+                <p class="text_modal">
+                        Wheat is one of the most useful cereal crops. Besides it serves as one of the main sources of food, wheat greatly benefits our health as well. 
+                    </p>
+
+                <div class="text-center mb-5">
+                    <img src="../img/plant/phen.png" alt="">
+                </div>
+                <div class="inp_block text-center">
+                    <span>Amount:</span>
+                    <input type="text" class="value_inp" value="1" name="plant_input" id="plant_input_1">
+                    <br><span id="plant_error_field_1" style="display:none;color:red;">Lack of coins balance</span>
+                </div>
+                <button class="btn_modal" id="plant_button_1" name="button_plant_tron">
+                    Buy for <span>11.750</span><i><img src="../img/icon/ico_money.png" alt=""></i>
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="modalContent" id="orange">
+        <div class="content_history text-center">
+            <div class="close_btn" onclick="$('#orange').hide()"><img src="../img/close.png" alt=""></div>
+            <h3>Purchase of orange field </h3>
+            <div class="text-center">
+                <div class="tab_inf">
+                    Overall balance<br>
+                    <span id="plant_user_balance_2" name="plant_user_balance">0</span> <i><img src="../img/icon/ico_money.png" alt=""></i>
+                </div>
+                <p class="text_modal">
+                        Orange is not only a delicious dessert but also a useful remedy for ailments. This exotic fruit helps to acquire body harmony, keep youth and beauty. 
+                </p>
+                <div class="text-center mb-5">
+                    <img src="../img/plant/orange.png" alt="">
+                </div>
+                <div class="inp_block text-center">
+                    <span>Amount:</span>
+                    <input type="text" class="value_inp" value="1" name="plant_input" id="plant_input_2">
+                    <br><span id="plant_error_field_2" style="display:none;color:red;">Lack of coins balance</span>
+                </div>
+                <button class="btn_modal" id="plant_button_2" name="button_plant_tron">
+                    Buy for <span>44.500</span><i><img src="../img/icon/ico_money.png" alt=""></i>
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="modalContent" id="tea">
+        <div class="content_history text-center">
+            <div class="close_btn" onclick="$('#tea').hide()"><img src="../img/close.png" alt=""></div>
+            <h3>Purchase of tea plantation </h3>
+            <div class="text-center">
+                <div class="tab_inf">
+                    Overall balance<br>
+                    <span id="plant_user_balance_3" name="plant_user_balance">0</span> <i><img src="../img/icon/ico_money.png" alt=""></i>
+                </div>
+                <p class="text_modal">
+                        Tea is the most popular drink on Earth. According to general count it is the essential beverage for two milliard people on Earth. Tea is the most ancient drink. 
+                </p>
+                <div class="text-center mb-5">
+                    <img src="../img/plant/tea.png" alt="">
+                </div>
+                <div class="inp_block text-center">
+                    <span>Amount:</span>
+                    <input type="text" class="value_inp" value="1" name="plant_input" id="plant_input_3">
+                    <br><span id="plant_error_field_3" style="display:none;color:red;">Lack of coins balance</span>
+                </div>
+                <button class="btn_modal" id="plant_button_3" name="button_plant_tron">
+                    Buy for <span>155.000</span><i><img src="../img/icon/ico_money.png" alt=""></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="modalContent" id="vino">
+        <div class="content_history text-center">
+            <div class="close_btn" onclick="$('#vino').hide()"><img src="../img/close.png" alt=""></div>
+            <h3>Purchase of grapes plantation </h3>
+            <div class="text-center">
+                <div class="tab_inf">
+                    Overall balance<br>
+                    <span id="plant_user_balance_4" name="plant_user_balance">0</span> <i><img src="../img/icon/ico_money.png" alt=""></i>
+                </div>
+                <p class="text_modal">
+                        Grapes - clambering shrub plant with sweet large berries. These berries can be used as food and to make vine. 
+                    </p>
+                <div class="text-center mb-5">
+                    <img src="../img/plant/vino.png" alt="">
+                </div>
+                <div class="inp_block text-center">
+                    <span>Amount:</span>
+                    <input type="text" class="value_inp" value="1" name="plant_input" id="plant_input_4">
+                    <br><span id="plant_error_field_4" style="display:none;color:red;">Lack of coins balance</span>
+                </div>
+                <button class="btn_modal" id="plant_button_4" name="button_plant_tron">
+                    Buy for <span>470.000</span><i><img src="../img/icon/ico_money.png" alt=""></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="modalContent" id="koki">
+        <div class="content_history text-center">
+            <div class="close_btn" onclick="$('#koki').hide()"><img src="../img/close.png" alt=""></div>
+            <h3>Purchase of Coca plantation</h3>
+            <div class="text-center">
+                <div class="tab_inf">
+                    Overall balance<br>
+                    <span id="plant_user_balance_5" name="plant_user_balance">0</span> <i><img src="../img/icon/ico_money.png" alt=""></i>
+                </div>
+                <p class="text_modal">
+                        Coca leaf chewing has a beneficial effect on a human being when used properly; this is known owing to thousand years’ experience of peoples. 
+                    </p>
+                <div class="text-center mb-5">
+                    <img src="../img/plant/koki.png" alt="">
+                </div>
+                <div class="inp_block text-center">
+                    <span>Amount:</span>
+                    <input type="text" class="value_inp" value="1" name="plant_input" id="plant_input_5">
+                    <br><span id="plant_error_field_5" style="display:none;color:red;">Lack of coins balance</span>
+                </div>
+                <button class="btn_modal" id="plant_button_5" name="button_plant_tron">
+                    Buy for <span>950.000</span><i><img src="../img/icon/ico_money.png" alt=""></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="modalContent" id="top">
+        <div class="content_top text-center">
+            <div class="close_btn" onclick="$('#top').hide()"><img src="../img/close.png" alt=""></div>
+            <h3>Top Players</h3>
+            <div class="text-center">
+                <div class="tab_inf">
+                    Your place<br>
+                    <span id="user_top_place">-</span> <i><img src="../img/icon/ico_top.png" alt=""></i>
+                </div>
+                <h4>
+                    <span>Trophy places</span>
+                </h4>
+                <table class="tob_table" id="table_liders_top">
+                        <tr>
+                                <th class="text-center">Place</th>
+                                <th class="text-center"></th>
+                                <th class="text-right">Profit per hour</th>
+                            </tr>
+                </table>
+                <h4>
+                    <span>Places of honor</span>
+                </h4>
+                <div class="table_scroll">
+                    <table class="tob_table" id="table_liders">
+                            <tr>
+                                    <th class="text-center">Place</th>
+                                    <th class="text-center"></th>
+                                    <th class="text-right">Profit per hour</th>
+                                </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header class="header">
+        <div class="container">
+            <div class="top_panel">
+                <div class="btn_mobail_menu" onclick="$('.menu_block').slideToggle(500)"><img class="mw-100" src="../img/bg/burger.png" alt=""></div>
+                <div class="lang_block">
+                        <a href="../ru/game.html"  class="item_lang"><img src="../img/icon/ru.png" alt=""></a>
+                        <a class="item_lang active"><img src="../img/icon/en.png" alt=""></a>
+                        <a href="../de/game.html"  class="item_lang"><img src="../img/icon/de.png" alt=""></a>
+                        <a href="../cn/game.html"  class="item_lang"><img src="../img/icon/ch.png" alt=""></a>
+                        <a href="../pl/game.html"  class="item_lang"><img src="../img/icon/pl.png" alt=""></a>
+                    </div>
+                <ul class="menu_block">
+                    <li>
+                        <a href="/en" class="item_menu"><img src="../img/main.png"/></a>
+                    </li>
+                   
+                    <li>
+                        <a class="item_menu" target="_blank">ACCOUNT: <span id="currentAccount">Please login to TronLink or TronPay</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-6 text-center">
+                <div class="title_stat_block">
+                    <span>
+                        Game<br>
+                        Stats
+                    </span>
+                </div>
+                <div class="block_statistick">
+                    <div class="row">
+                        <div class="col-12 col-lg-6">
+                            <div class="item_stat  text-center">
+                                <img src="../img/lk/st1.png" class="mw-100" alt="" height="70%">
+                                <div class="text_table_stat">
+                                    <p class="value_item" id="balance">0 TRX</p>
+                                    <span>Invested</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <div class="item_stat  text-center">
+                                <img src="../img/lk/st2.png" class="mw-100" alt="" height="70%">
+                                <div class="text_table_stat">
+                                    <p class="value_item" id="totalPlayers">0</p>
+                                    <span>Players</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <div class="item_stat  text-center">
+                                <img src="../img/lk/st3.png" class="mw-100" alt="" height="70%">
+                                <div class="text_table_stat">
+                                    <p class="value_item" id="totalPlantation">0</p>
+                                    <span>Plantation in the game</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <div class="item_stat  text-center">
+                                <img src="../img/lk/st4.png" class="mw-100" alt="" height="70%">
+                                <div class="text_table_stat">
+                                    <p class="value_item" id="totalPayout">0 TRX</p>
+                                    <span>Paid out</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel_btn text-center">
+            <a class="modal_btn" id="button_top">
+                <i><img src="../img/icon/b1.png" alt=""></i> Top Players
+            </a>
+            <a class="modal_btn" id="button_transfers">
+                <i><img src="../img/icon/b2.png" alt=""></i> Transfers
+            </a>
+        </div>
+            </div>
+            <div class="col-12 col-lg-6 text-center">
+                <div class="title_stat_block2">
+                    <span>
+                        Your <br>
+                        Account
+                    </span>
+                </div>
+                <div class="block_statistick2">
+                    <div class="row">
+                        <div class="col-12 col-lg-6">
+                            <div class="item_stat  text-center">
+                                <img src="../img/lk/st6.png" class="mw-100" alt="">
+                                <div class="text_table_stat">
+                                    <p class="value_item" id="user_coinsForBuy">0 <i><img src="../img/icon/ico_money.png" alt=""></i></p>
+                                    <span>
+                                        Treasury</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <div class="item_stat  text-center">
+                                <img src="../img/lk/st5.png" class="mw-100" alt="">
+                                <div class="text_table_stat">
+                                    <p class="value_item" id="user_coinsForSell">0 <i><img src="../img/icon/ico_money.png" alt=""></i></p>
+                                    <span>
+                                        Spare</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <div class="item_stat  text-center">
+                                <img src="../img/lk/st7.png" class="mw-100" alt="" height="70%">
+                                <div class="text_table_stat">
+                                    <p class="value_item" id="user_factories">0</p>
+                                    <span>
+                                        Plantation planted</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <div class="item_stat  text-center">
+                                <img src="../img/lk/st8.png" class="mw-100" alt="">
+                                <div class="text_table_stat">
+                                    <p class="value_item" id="user_dividents">0 <i><img src="../img/icon/ico_money.png" alt=""></i></p>
+                                    <span>
+                                        Total profit per hour</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel_btn">
+           <!---   <a class="modal_btn" id="button_popol">
+                <i><img src="../img/icon/b1.png" alt=""></i> TOP UP
+            </a>
+            <a class="modal_btn" id="button_vivod">
+                <i><img src="../img/icon/b1.png" alt=""></i> WITHDRAW
+            </a>
+        -->
+        </div>
+    </div>
+ </div>
+        <div class="row">
+             <div class="col-12 col-lg-4">
+                <div class="item_game">
+                    <p class="proc">96% / per mo</p>
+                    <p class="name_plant">Rice</p>
+                    <div class="image_plant_game">
+                        <img src="../img/plant/ris.png" class="mw-100" alt="">
+                    </div>
+                    <div class="info_plant_block text-left">
+                        <p>
+                            <i><img src="../img/icon/p1.png" alt=""></i>Planted: <span id="factory_count_0">0 </span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p2.png" alt=""></i>Your Profit per hour: <span id="factory_divident_0">0</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p2.png" alt=""></i>Profit per hour: <span>4</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p3.png" alt=""></i>Price: <span>3,000</span>
+                        </p>
+                    </div>
+                    <button class="btn_bue" id="factory_button_0" name="button_plant">
+                        <i><img src="../img/ico_bue.png" alt=""></i> Plant
+                    </button>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="item_game">
+                    <p class="proc">98% / per mo</p>
+                    <p class="name_plant">Wheat</p>
+                    <div class="image_plant_game">
+                        <img src="../img/plant/phen.png" class="mw-100" alt="">
+                    </div>
+                    <div class="info_plant_block text-left">
+                        <p>
+                            <i><img src="../img/icon/p1.png" alt=""></i>Planted: <span id="factory_count_1">0 </span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p2.png" alt=""></i>Your Profit per hour: <span id="factory_divident_1">0</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p2.png" alt=""></i>Profit per hour: <span>16</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p3.png" alt=""></i>Price: <span>11,750</span>
+                        </p>
+                    </div>
+                    <button class="btn_bue" id="factory_button_1" name="button_plant">
+                        <i><img src="../img/ico_bue.png" alt=""></i> Plant
+                    </button>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="item_game">
+                    <p class="proc">100% / per mo</p>
+                    <p class="name_plant">Oranges</p>
+                    <div class="image_plant_game">
+                        <img src="../img/plant/orange.png" class="mw-100" alt="">
+                    </div>
+                    <div class="info_plant_block text-left">
+                        <p>
+                            <i><img src="../img/icon/p1.png" alt=""></i>Planted: <span id="factory_count_2">0 </span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p2.png" alt=""></i>Your Profit per hour: <span id="factory_divident_2">0</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p2.png" alt=""></i>Profit per hour: <span>62</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p3.png" alt=""></i>Price: <span>44,500</span>
+                        </p>
+                    </div>
+                    <button class="btn_bue" id="factory_button_2" name="button_plant">
+                        <i><img src="../img/ico_bue.png" alt=""></i> Plant
+                    </button>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="item_game">
+                    <p class="proc">102% / per mo</p>
+                    <p class="name_plant">Tea</p>
+                    <div class="image_plant_game">
+                        <img src="../img/plant/tea.png" class="mw-100" alt="">
+                    </div>
+                    <div class="info_plant_block text-left">
+                        <p>
+                            <i><img src="../img/icon/p1.png" alt=""></i>Planted: <span id="factory_count_3">0 </span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p2.png" alt=""></i>Your Profit per hour: <span id="factory_divident_3">0</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p2.png" alt=""></i>Profit per hour: <span>220</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p3.png" alt=""></i>Price: <span>155,000</span>
+                        </p>
+                    </div>
+                    <button class="btn_bue" id="factory_button_3" name="button_plant">
+                        <i><img src="../img/ico_bue.png" alt=""></i> Plant
+                    </button>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="item_game">
+                    <p class="proc">104% / per mo</p>
+                    <p class="name_plant">Grapes</p>
+                    <div class="image_plant_game">
+                        <img src="../img/plant/vino.png" class="mw-100" alt="">
+                    </div>
+                    <div class="info_plant_block text-left">
+                        <p>
+                            <i><img src="../img/icon/p1.png" alt=""></i>Planted: <span id="factory_count_4">0 </span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p2.png" alt=""></i>Your Profit per hour: <span id="factory_divident_4">0</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p2.png" alt=""></i>Profit per hour: <span>680</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p3.png" alt=""></i>Price: <span>470,000</span>
+                        </p>
+                    </div>
+                    <button class="btn_bue" id="factory_button_4" name="button_plant">
+                        <i><img src="../img/ico_bue.png" alt=""></i> Plant
+                    </button>
+                </div>
+            </div>
+           <div class="col-12 col-lg-4">
+                <div class="item_game">
+                    <p class="proc">106% / per mo</p>
+                    <p class="name_plant">Coca</p>
+                    <div class="image_plant_game">
+                        <img src="../img/plant/koki.png" class="mw-100" alt="">
+                    </div>
+                    <div class="info_plant_block text-left">
+                        <p>
+                            <i><img src="../img/icon/p1.png" alt=""></i>Planted: <span id="factory_count_5">0 </span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p2.png" alt=""></i>Your Profit per hour: <span id="factory_divident_5">0</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p2.png" alt=""></i>Profit per hour: <span>1,400</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p3.png" alt=""></i>Price: <span>950,000</span>
+                        </p>
+                    </div>
+                    <button class="btn_bue" id="factory_button_5" name="button_plant">
+                        <i><img src="../img/ico_bue.png" alt=""></i> Plant
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer_content">
+                    <p class="copyright">
+                            <i class="mr-2"><img src="../img/icon/copyright.png" alt=""></i> You will need web extension for the game <a href="https://chrome.google.com/webstore/detail/tronlink/ibnejdfjmmkpcnlpebklmnkoeoihofec" target="_blank">TronLink</a> or <a href="https://chrome.google.com/webstore/detail/tronpay/gjdneabihbmcpobmfhcnljaojmgoihfk" target="_blank">TronPay</a>    
+                    </p>
+                    <div class="social_block">
+                            <span>Contacts</span>
+                            <a href="https://t.me/tronland_chat_en" class="item_social" target="_blank"><img src="../img/icon/s1.png" alt=""></a>
+                            <a href="https://discord.gg/8NR5qRp" class="item_social" target="_blank"><img src="../img/icon/s2.png" alt=""></a>
+                            <a href="https://bitcointalk.org/index.php?topic=5123797.msg50277383" class="item_social" target="_blank"><img src="../img/icon/s3.png" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/bn.min.js"></script>
+    <script src="../js/tronweb.min.js"></script>
+    <script src="../js/tron.js"></script>
+</body>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-136147350-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-136147350-1');
+</script>
+
+</html>

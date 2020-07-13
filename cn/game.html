@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="ch">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Create your plantation, develop it and get cryptocurrency Tron every day!">
+    <meta name="keywords" content="tron, land, tron land, smart, contract, investment, throne, tron, coin, trx, game, strategy, earnings on the Internet, passive income, investors, investment fund, income, finance, freebies, simple earnings, how to make money on the Internet, rates, bet, bet, smart contract, cryptocurrency, bounty, bitcoin, bitcoin, money, easy money, mmm, mlm, dice2win, eosbet, mmm3eth, easy invest, iz invest, 333eth, gorgona, investment fund, financial pyramid">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../js/slick/slick.css">
+    <link rel="stylesheet" href="../js/slick/slick-theme.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/media.css">
+    <link rel="shortcut icon" href="../img/favico.ico" type="image/x-icon">
+    <title>TRONLAND&#169; - 基於Tron網絡的經濟戰略</title>
+</head>
+
+<body class="game_page">
+
+    <div class="modalContent" id="history">
+        <div class="content_history text-center">
+            <div class="close_btn" onclick="$('#history').hide()"><img src="../img/close.png" alt=""></div>
+            <h3>转账记录</h3>
+            <div class="text-center">
+                <div class="tab_inf">
+                        总补充金额<br>
+                    <span id="transfers_popol_sum">0 TRX</span>
+                </div>
+                <div class="tab_inf">
+                        总提现金额<br>
+                    <span id="transfers_vivod_sum">0 TRX</span>
+                </div>
+            </div>
+            <div class="table_scroll2">
+            <table class="his_table" id="history_table">
+                    <tr>
+                            <th class="text-left">时间</th>
+                            <th>交易号码</th>
+                            <th class="text-right">总和</th>
+                        </tr>
+            </table>
+        </div>
+        </div>
+    </div>
+    <div class="modalContent" id="vivod" style="display:none;">
+        <div class="content_history text-center">
+            <div class="close_btn" onclick="$('#vivod').hide()"><img src="../img/close.png" alt=""></div>
+            <h3>提现资金</h3>
+            <div class="text-center">
+                <div class="tab_inf">
+                        进入提款<br>
+                    <span id="vivod_balance">0</span> <i><img src="../img/icon/ico_money.png" alt=""></i> 
+                </div>
+                <p class="text_modal">
+                        如果您的金库资金不足，可以随时提现这些资金也可以将其用于种植园的开发
+                </p>
+                <div class="course_block text-center">
+                    <span>硬币汇率:</span>
+                    <p class="item_course">
+                        1 TRX = 25 <i><img src="../img/icon/ico_money.png" alt=""></i>
+                    </p>
+                </div>
+                <div class="text-center mb-5">
+                    <img src="../img/lk/st5.png" alt="">
+                </div>
+                <div class="inp_block text-center">
+                    <span>硬币数量:</span>
+                    <input type="text" class="value_inp" value="2500" id="input_withdraw">
+                    <br><span id="withdraw_error_field" style="display:none;color:red;">没有足够的硬币退出。</span>
+                </div>
+                <button class="btn_modal" id="button_withdraw">
+                        提款 <span>100</span> TRX
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="modalContent" id="popol" style="display:none;">
+        <div class="content_history text-center">
+            <div class="close_btn" onclick="$('#popol').hide()"><img src="../img/close.png" alt=""></div>
+            <h3>硬币购买</h3>
+            <div class="text-center">
+                <div class="tab_inf">
+                        在您的帐户中<br>
+                    <span id="user_balance">0</span> TRX 
+                </div>
+                <p class="text_modal">
+                        这些资金可用于购买新种植园。
+                </p>
+                <div class="course_block text-center">
+                    <span>硬币汇率:</span>
+                    <p class="item_course">
+                        1 TRX = 25 <i><img src="../img/icon/ico_money.png" alt=""></i>
+                    </p>
+                </div>
+                <div class="text-center mb-5">
+                    <img src="../img/lk/st8.png" alt="">
+                </div>
+                <div class="inp_block text-center">
+                    <span>TRX:</span>
+                    <input type="text" class="value_inp" value="100" id="input_buy">
+                    <br><span id="buy_error_field" style="display:none;color:red;">錢包上沒有TRX餘額</span>
+                </div>
+                <button class="btn_modal" id="button_buy">
+                        购买 <span>2500</span> <i><img src="../img/icon/ico_money.png" alt=""></i>
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="modalContent" id="no_tronweb" style="display:none;">
+        <div class="content_history text-center">
+            <div class="close_btn" onclick="$('#no_tronweb').hide()"><img src="../img/close.png" alt=""></div>
+            <h3>注册</h3>
+            <div class="text-center">
+                <div class="text_modal">
+                在pc端需要下载安装  <a href="https://chrome.google.com/webstore/detail/tronpay/gjdneabihbmcpobmfhcnljaojmgoihfk" target="_blank">TronPay</a> 或者 <a href="https://chrome.google.com/webstore/detail/tronlink/ibnejdfjmmkpcnlpebklmnkoeoihofec" target="_blank">TronLink</a> 进行登录。<br>
+                <br>
+                智能手机请根据型号下载 <a href="https://apple.co/2AW9iX2" target="_blank">TronWallet [iOS]</a> 或者 <a href="https://goo.gl/aGVd5T" target="_blank">TronWallet [Android]</a> 钱包登录。<br>
+                <br> 通过内置浏览器，转到 https://tronland.online<br><br><br><br><br><br><br><br><br><br><br>有其他问题？
+                请在 <a href="https://t.me/tronland_chat_en" target="_blank">Telegram</a> 或者 <a href="https://discord.gg/8NR5qRp" target="_blank">Discord</a> 中聊天咨询。
+                </div>
+                <button class="btn_modal" id="auth_ok">
+                    OK
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <div class="modalContent" id="rise">
+        <div class="content_history text-center">
+            <div class="close_btn" onclick="$('#rise').hide()"><img src="../img/close.png" alt=""></div>
+            <h3>水稻种植园买 </h3>
+            <div class="text-center">
+                <div class="tab_inf">
+                    总余额<br>
+                    <span id="plant_user_balance_0" name="plant_user_balance">0</span> <i><img src="../img/icon/ico_money.png" alt=""></i> 
+                </div>
+                <p class="text_modal">
+                        大米对我们这个星球上的大多数人口而言是一种极有价值的农作物，也是日本、太平洋岛屿直至阿拉伯和非洲国家的主要食量。
+                    </p>
+                <div class="text-center mb-5">
+                    <img src="../img/plant/ris.png" alt="">
+                </div>
+                <div class="inp_block text-center">
+                    <span>种植园数量:</span>
+                    <input type="text" class="value_inp" value="1" name="plant_input" id="plant_input_0">
+                    <br><span id="plant_error_field_0" style="display:none;color:red;">缺乏硬幣平衡</span>
+                </div>
+                <button class="btn_modal" id="plant_button_0" name="button_plant_tron">
+                    购买 <span>3.000</span><i><img src="../img/icon/ico_money.png" alt=""></i>
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="modalContent" id="phen">
+        <div class="content_history text-center">
+            <div class="close_btn" onclick="$('#phen').hide()"><img src="../img/close.png" alt=""></div>
+            <h3>麦田购买 </h3>
+            <div class="text-center">
+                <div class="tab_inf">
+                    总余额<br>
+                    <span id="plant_user_balance_1" name="plant_user_balance">0</span> <i><img src="../img/icon/ico_money.png" alt=""></i>
+                </div>
+                <p class="text_modal">
+                        小麦是最有益处的谷物之一。 除了作为食物的主要来源之一，它还为我们的身体机能带来巨大的好处。
+                    </p>
+
+                <div class="text-center mb-5">
+                    <img src="../img/plant/phen.png" alt="">
+                </div>
+                <div class="inp_block text-center">
+                    <span>种植园数量:</span>
+                    <input type="text" class="value_inp" value="1" name="plant_input" id="plant_input_1">
+                    <br><span id="plant_error_field_1" style="display:none;color:red;">缺乏硬幣平衡</span>
+                </div>
+                <button class="btn_modal" id="plant_button_1" name="button_plant_tron">
+                    购买 <span>11.750</span><i><img src="../img/icon/ico_money.png" alt=""></i>
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="modalContent" id="orange">
+        <div class="content_history text-center">
+            <div class="close_btn" onclick="$('#orange').hide()"><img src="../img/close.png" alt=""></div>
+            <h3>橙子畦田的购买 </h3>
+            <div class="text-center">
+                <div class="tab_inf">
+                    总余额<br>
+                    <span id="plant_user_balance_2" name="plant_user_balance">0</span> <i><img src="../img/icon/ico_money.png" alt=""></i>
+                </div>
+                <p class="text_modal">
+                        橙子不仅是一种美味的水果，也是对抗疾病的有效手段。 异域果实有助于保持身材挺秀保持青春和美丽。
+                </p>
+                <div class="text-center mb-5">
+                    <img src="../img/plant/orange.png" alt="">
+                </div>
+                <div class="inp_block text-center">
+                    <span>种植园数量:</span>
+                    <input type="text" class="value_inp" value="1" name="plant_input" id="plant_input_2">
+                    <br><span id="plant_error_field_2" style="display:none;color:red;">缺乏硬幣平衡</span>
+                </div>
+                <button class="btn_modal" id="plant_button_2" name="button_plant_tron">
+                    购买 <span>44.500</span><i><img src="../img/icon/ico_money.png" alt=""></i>
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="modalContent" id="tea">
+        <div class="content_history text-center">
+            <div class="close_btn" onclick="$('#tea').hide()"><img src="../img/close.png" alt=""></div>
+            <h3>茶园购买 </h3>
+            <div class="text-center">
+                <div class="tab_inf">
+                    总余额<br>
+                    <span id="plant_user_balance_3" name="plant_user_balance">0</span> <i><img src="../img/icon/ico_money.png" alt=""></i>
+                </div>
+                <p class="text_modal">
+                        茶 - 全球最常见的饮品，据统计，它是地球上20亿人们的主要饮品。 茶是最古老的饮品之一。
+                </p>
+                <div class="text-center mb-5">
+                    <img src="../img/plant/tea.png" alt="">
+                </div>
+                <div class="inp_block text-center">
+                    <span>种植园数量:</span>
+                    <input type="text" class="value_inp" value="1" name="plant_input" id="plant_input_3">
+                    <br><span id="plant_error_field_3" style="display:none;color:red;">缺乏硬幣平衡</span>
+                </div>
+                <button class="btn_modal" id="plant_button_3" name="button_plant_tron">
+                    购买 <span>155.000</span><i><img src="../img/icon/ico_money.png" alt=""></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="modalContent" id="vino">
+        <div class="content_history text-center">
+            <div class="close_btn" onclick="$('#vino').hide()"><img src="../img/close.png" alt=""></div>
+            <h3>葡萄种植园购买 </h3>
+            <div class="text-center">
+                <div class="tab_inf">
+                    总余额<br>
+                    <span id="plant_user_balance_4" name="plant_user_balance">0</span> <i><img src="../img/icon/ico_money.png" alt=""></i>
+                </div>
+                <p class="text_modal">
+                        葡萄 - 爬蔓灌木植物，果实为甜味大浆果，植物的果实还可用于饮食及酿酒。
+                    </p>
+                <div class="text-center mb-5">
+                    <img src="../img/plant/vino.png" alt="">
+                </div>
+                <div class="inp_block text-center">
+                    <span>种植园数量:</span>
+                    <input type="text" class="value_inp" value="1" name="plant_input" id="plant_input_4">
+                    <br><span id="plant_error_field_4" style="display:none;color:red;">缺乏硬幣平衡</span>
+                </div>
+                <button class="btn_modal" id="plant_button_4" name="button_plant_tron">
+                    购买 <span>470.000</span><i><img src="../img/icon/ico_money.png" alt=""></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="modalContent" id="koki">
+        <div class="content_history text-center">
+            <div class="close_btn" onclick="$('#koki').hide()"><img src="../img/close.png" alt=""></div>
+            <h3>古柯种植园购买</h3>
+            <div class="text-center">
+                <div class="tab_inf">
+                    总余额<br>
+                    <span id="plant_user_balance_5" name="plant_user_balance">0</span> <i><img src="../img/icon/ico_money.png" alt=""></i>
+                </div>
+                <p class="text_modal">
+                        古柯 – 值得强调的是，千年以来人们的生活经验告诉我们适当咀嚼古柯叶对人是有益处的。
+                    </p>
+                <div class="text-center mb-5">
+                    <img src="../img/plant/koki.png" alt="">
+                </div>
+                <div class="inp_block text-center">
+                    <span>种植园数量:</span>
+                    <input type="text" class="value_inp" value="1" name="plant_input" id="plant_input_5">
+                    <br><span id="plant_error_field_5" style="display:none;color:red;">缺乏硬幣平衡</span>
+                </div>
+                <button class="btn_modal" id="plant_button_5" name="button_plant_tron">
+                    购买 <span>950.000</span><i><img src="../img/icon/ico_money.png" alt=""></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="modalContent" id="top">
+        <div class="content_top text-center">
+            <div class="close_btn" onclick="$('#top').hide()"><img src="../img/close.png" alt=""></div>
+            <h3>玩家排名</h3>
+            <div class="text-center">
+                <div class="tab_inf">
+                        你的名次<br>
+                    <span id="user_top_place">-</span> <i><img src="../img/icon/ico_top.png" alt=""></i>
+                </div>
+                <h4>
+                    <span>顶级玩家</span>
+                </h4>
+                <table class="tob_table" id="table_liders_top">
+                        <tr>
+                                <th class="text-center">名次</th>
+                                <th class="text-center"></th>
+                                <th class="text-right">每小时的硬币</th>
+                            </tr>
+                </table>
+                <h4>
+                    <span>荣誉玩家</span>
+                </h4>
+                <div class="table_scroll">
+                    <table class="tob_table" id="table_liders">
+                            <tr>
+                                    <th class="text-center">名次</th>
+                                    <th class="text-center"></th>
+                                    <th class="text-right">每小时的硬币</th>
+                                </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header class="header">
+        <div class="container">
+            <div class="top_panel">
+                <div class="btn_mobail_menu" onclick="$('.menu_block').slideToggle(500)"><img class="mw-100" src="../img/bg/burger.png" alt=""></div>
+                <div class="lang_block">
+                        <a href="../ru/game.html"  class="item_lang"><img src="../img/icon/ru.png" alt=""></a>
+                        <a href="../en/game.html"  class="item_lang"><img src="../img/icon/en.png" alt=""></a>
+                        <a href="../de/game.html"  class="item_lang"><img src="../img/icon/de.png" alt=""></a>
+                        <a class="item_lang active"><img src="../img/icon/ch.png" alt=""></a>
+                        <a href="../pl/game.html"  class="item_lang"><img src="../img/icon/pl.png" alt=""></a>
+                    </div>
+                <ul class="menu_block">
+                    <li>
+                        <a href="/cn" class="item_menu"><img src="../img/main.png"/></a>
+                    </li>
+                   
+                    <li>
+                        <a class="item_menu" target="_blank">帐户: <span id="currentAccount">请登录 TronLink 要么 TronPay</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-6 text-center">
+                <div class="title_stat_block">
+                    <span>
+                            总统计
+                    </span>
+                </div>
+                <div class="block_statistick">
+                    <div class="row">
+                        <div class="col-12 col-lg-6">
+                            <div class="item_stat  text-center">
+                                <img src="../img/lk/st1.png" class="mw-100" alt="" height="70%">
+                                <div class="text_table_stat">
+                                    <p class="value_item" id="balance">0 TRX</p>
+                                    <span>投入资金</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <div class="item_stat  text-center">
+                                <img src="../img/lk/st2.png" class="mw-100" alt="" height="70%">
+                                <div class="text_table_stat">
+                                    <p class="value_item" id="totalPlayers">0</p>
+                                    <span>玩家</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <div class="item_stat  text-center">
+                                <img src="../img/lk/st3.png" class="mw-100" alt="" height="70%">
+                                <div class="text_table_stat">
+                                    <p class="value_item" id="totalPlantation">0</p>
+                                    <span>游戏中的种植园</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <div class="item_stat  text-center">
+                                <img src="../img/lk/st4.png" class="mw-100" alt="" height="70%">
+                                <div class="text_table_stat">
+                                    <p class="value_item" id="totalPayout">0 TRX</p>
+                                    <span>已付款</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel_btn text-center">
+            <a class="modal_btn" id="button_top">
+                <i><img src="../img/icon/b1.png" alt=""></i> 玩家排名
+            </a>
+            <a class="modal_btn" id="button_transfers">
+                <i><img src="../img/icon/b2.png" alt=""></i> 转账记录
+            </a>
+        </div>
+            </div>
+            <div class="col-12 col-lg-6 text-center">
+                <div class="title_stat_block2">
+                    <span>
+                            你的帐户
+                    </span>
+                </div>
+                <div class="block_statistick2">
+                    <div class="row">
+                        <div class="col-12 col-lg-6">
+                            <div class="item_stat  text-center">
+                                <img src="../img/lk/st6.png" class="mw-100" alt="">
+                                <div class="text_table_stat">
+                                    <p class="value_item" id="user_coinsForBuy">0 <i><img src="../img/icon/ico_money.png" alt=""></i></p>
+                                    <span>
+                                            库存资金</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <div class="item_stat  text-center">
+                                <img src="../img/lk/st5.png" class="mw-100" alt="">
+                                <div class="text_table_stat">
+                                    <p class="value_item" id="user_coinsForSell">0 <i><img src="../img/icon/ico_money.png" alt=""></i></p>
+                                    <span>
+                                            备用资金</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <div class="item_stat  text-center">
+                                <img src="../img/lk/st7.png" class="mw-100" alt="" height="70%">
+                                <div class="text_table_stat">
+                                    <p class="value_item" id="user_factories">0</p>
+                                    <span>
+                                            已种植</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <div class="item_stat  text-center">
+                                <img src="../img/lk/st8.png" class="mw-100" alt="">
+                                <div class="text_table_stat">
+                                    <p class="value_item" id="user_dividents">0 <i><img src="../img/icon/ico_money.png" alt=""></i></p>
+                                    <span>
+                                            每小时总收入</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel_btn">
+           <!---  <a class="modal_btn" id="button_popol">
+                <i><img src="../img/icon/b1.png" alt=""></i> 充值
+            </a>
+            <a class="modal_btn" id="button_vivod">
+                <i><img src="../img/icon/b1.png" alt=""></i> 提现
+            </a>
+        -->
+        </div>
+    </div>
+ </div>
+        <div class="row">
+             <div class="col-12 col-lg-4">
+                <div class="item_game">
+                    <p class="proc">96% /月</p>
+                    <p class="name_plant">大米</p>
+                    <div class="image_plant_game">
+                        <img src="../img/plant/ris.png" class="mw-100" alt="">
+                    </div>
+                    <div class="info_plant_block text-left">
+                        <p>
+                            <i><img src="../img/icon/p1.png" alt=""></i>已种植: <span id="factory_count_0">0 </span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p2.png" alt=""></i>你的每小時收入: <span id="factory_divident_0">0</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p2.png" alt=""></i>每小时收入: <span>4</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p3.png" alt=""></i>价格: <span>3,000</span>
+                        </p>
+                    </div>
+                    <button class="btn_bue" id="factory_button_0" name="button_plant">
+                        <i><img src="../img/ico_bue.png" alt=""></i> 购买种植园
+                    </button>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="item_game">
+                    <p class="proc">98% /月</p>
+                    <p class="name_plant">小麦</p>
+                    <div class="image_plant_game">
+                        <img src="../img/plant/phen.png" class="mw-100" alt="">
+                    </div>
+                    <div class="info_plant_block text-left">
+                        <p>
+                            <i><img src="../img/icon/p1.png" alt=""></i>已种植: <span id="factory_count_1">0 </span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p2.png" alt=""></i>你的每小時收入: <span id="factory_divident_1">0</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p2.png" alt=""></i>每小时收入: <span>16</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p3.png" alt=""></i>价格: <span>11,750</span>
+                        </p>
+                    </div>
+                    <button class="btn_bue" id="factory_button_1" name="button_plant">
+                        <i><img src="../img/ico_bue.png" alt=""></i> 购买种植园
+                    </button>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="item_game">
+                    <p class="proc">100% /月</p>
+                    <p class="name_plant">桔子</p>
+                    <div class="image_plant_game">
+                        <img src="../img/plant/orange.png" class="mw-100" alt="">
+                    </div>
+                    <div class="info_plant_block text-left">
+                        <p>
+                            <i><img src="../img/icon/p1.png" alt=""></i>已种植: <span id="factory_count_2">0 </span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p2.png" alt=""></i>你的每小時收入: <span id="factory_divident_2">0</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p2.png" alt=""></i>每小时收入: <span>62</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p3.png" alt=""></i>价格: <span>44,500</span>
+                        </p>
+                    </div>
+                    <button class="btn_bue" id="factory_button_2" name="button_plant">
+                        <i><img src="../img/ico_bue.png" alt=""></i> 购买种植园
+                    </button>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="item_game">
+                    <p class="proc">102% /月</p>
+                    <p class="name_plant">茶</p>
+                    <div class="image_plant_game">
+                        <img src="../img/plant/tea.png" class="mw-100" alt="">
+                    </div>
+                    <div class="info_plant_block text-left">
+                        <p>
+                            <i><img src="../img/icon/p1.png" alt=""></i>已种植: <span id="factory_count_3">0 </span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p2.png" alt=""></i>你的每小時收入: <span id="factory_divident_3">0</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p2.png" alt=""></i>每小时收入: <span>220</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p3.png" alt=""></i>价格: <span>155,000</span>
+                        </p>
+                    </div>
+                    <button class="btn_bue" id="factory_button_3" name="button_plant">
+                        <i><img src="../img/ico_bue.png" alt=""></i> 购买种植园
+                    </button>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="item_game">
+                    <p class="proc">104% /月</p>
+                    <p class="name_plant">葡萄</p>
+                    <div class="image_plant_game">
+                        <img src="../img/plant/vino.png" class="mw-100" alt="">
+                    </div>
+                    <div class="info_plant_block text-left">
+                        <p>
+                            <i><img src="../img/icon/p1.png" alt=""></i>已种植: <span id="factory_count_4">0 </span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p2.png" alt=""></i>你的每小時收入: <span id="factory_divident_4">0</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p2.png" alt=""></i>每小时收入: <span>680</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p3.png" alt=""></i>价格: <span>470,000</span>
+                        </p>
+                    </div>
+                    <button class="btn_bue" id="factory_button_4" name="button_plant">
+                        <i><img src="../img/ico_bue.png" alt=""></i> 购买种植园
+                    </button>
+                </div>
+            </div>
+           <div class="col-12 col-lg-4">
+                <div class="item_game">
+                    <p class="proc">106% /月</p>
+                    <p class="name_plant">古柯灌木丛</p>
+                    <div class="image_plant_game">
+                        <img src="../img/plant/koki.png" class="mw-100" alt="">
+                    </div>
+                    <div class="info_plant_block text-left">
+                        <p>
+                            <i><img src="../img/icon/p1.png" alt=""></i>已种植: <span id="factory_count_5">0 </span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p2.png" alt=""></i>你的每小時收入: <span id="factory_divident_5">0</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p2.png" alt=""></i>每小时收入: <span>1,400</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p3.png" alt=""></i>价格: <span>950,000</span>
+                        </p>
+                    </div>
+                    <button class="btn_bue" id="factory_button_5" name="button_plant">
+                        <i><img src="../img/ico_bue.png" alt=""></i> 购买种植园
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer_content">
+                    <p class="copyright">
+                            <i class="mr-2"><img src="../img/icon/copyright.png" alt=""></i> 你需要使用浏览器拓展 <a href="https://chrome.google.com/webstore/detail/tronlink/ibnejdfjmmkpcnlpebklmnkoeoihofec" target="_blank">TronLink</a> 或 <a href="https://chrome.google.com/webstore/detail/tronpay/gjdneabihbmcpobmfhcnljaojmgoihfk" target="_blank">TronPay</a>    
+                    </p>
+                    <div class="social_block">
+                            <span>联系我们</span>
+                            <a href="https://t.me/tronland_chat_en" class="item_social" target="_blank"><img src="../img/icon/s1.png" alt=""></a>
+                            <a href="https://discord.gg/8NR5qRp" class="item_social" target="_blank"><img src="../img/icon/s2.png" alt=""></a>
+                            <a href="https://bitcointalk.org/index.php?topic=5123797.msg50277383" class="item_social" target="_blank"><img src="../img/icon/s3.png" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/bn.min.js"></script>
+    <script src="../js/tronweb.min.js"></script>
+    <script src="../js/tron.js"></script>
+</body>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-136147350-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-136147350-1');
+</script>
+
+</html>

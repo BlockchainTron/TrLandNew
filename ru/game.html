@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Create your plantation, develop it and get cryptocurrency Tron every day!">
+    <meta name="keywords" content="tron, land, tron land, smart, contract, investment, throne, tron, coin, trx, game, strategy, earnings on the Internet, passive income, investors, investment fund, income, finance, freebies, simple earnings, how to make money on the Internet, rates, bet, bet, smart contract, cryptocurrency, bounty, bitcoin, bitcoin, money, easy money, mmm, mlm, dice2win, eosbet, mmm3eth, easy invest, iz invest, 333eth, gorgona, investment fund, financial pyramid">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../js/slick/slick.css">
+    <link rel="stylesheet" href="../js/slick/slick-theme.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/media.css">
+    <link rel="shortcut icon" href="../img/favico.ico" type="image/x-icon">
+    <title>TRONLAND&#169; - Экономическая стратегия на блокчейне Tron Network</title>
+</head>
+
+<body class="game_page">
+
+    <div class="modalContent" id="history">
+        <div class="content_history text-center">
+            <div class="close_btn" onclick="$('#history').hide()"><img src="../img/close.png" alt=""></div>
+            <h3>История переводов</h3>
+            <div class="text-center">
+                <div class="tab_inf">
+                    Всего пополнено<br>
+                    <span id="transfers_popol_sum">0 TRX</span>
+                </div>
+                <div class="tab_inf">
+                    Всего снято<br>
+                    <span id="transfers_vivod_sum">0 TRX</span>
+                </div>
+            </div>
+            <div class="table_scroll2">
+            <table class="his_table" id="history_table">
+                    <tr>
+                            <th class="text-left">Время</th>
+                            <th>№ транзакции</th>
+                            <th class="text-right">Сумма</th>
+                        </tr>
+            </table>
+        </div>
+        </div>
+    </div>
+    <div class="modalContent" id="vivod" style="display:none;">
+        <div class="content_history text-center">
+            <div class="close_btn" onclick="$('#vivod').hide()"><img src="../img/close.png" alt=""></div>
+            <h3>Вывод средств</h3>
+            <div class="text-center">
+                <div class="tab_inf">
+                    Доступно на вывод<br>
+                    <span id="vivod_balance">0</span> <i><img src="../img/icon/ico_money.png" alt=""></i> 
+                </div>
+                <p class="text_modal">
+                    Эти средства вы можете вывести в любой момент, их
+                    так же можно потратить на развитие ваших плантаций,
+                    если у вас не хватит средств в казне
+                </p>
+                <div class="course_block text-center">
+                    <span>Курс монет:</span>
+                    <p class="item_course">
+                        1 TRX = 25 <i><img src="../img/icon/ico_money.png" alt=""></i>
+                    </p>
+                </div>
+                <div class="text-center mb-5">
+                    <img src="../img/lk/st5.png" alt="">
+                </div>
+                <div class="inp_block text-center">
+                    <span>Количество монет:</span>
+                    <input type="text" class="value_inp" value="2500" id="input_withdraw">
+                    <br><span id="withdraw_error_field" style="display:none;color:red;">Недостаточно монет для вывода</span>
+                </div>
+                <button class="btn_modal" id="button_withdraw">
+                    Вывести <span>100</span> TRX
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="modalContent" id="popol" style="display:none;">
+        <div class="content_history text-center">
+            <div class="close_btn" onclick="$('#popol').hide()"><img src="../img/close.png" alt=""></div>
+            <h3>Приобрести монеты</h3>
+            <div class="text-center">
+                <div class="tab_inf">
+                    На вашем счету<br>
+                    <span id="user_balance">0</span> TRX 
+                </div>
+                <p class="text_modal">
+                    Эти средства можно будет потратить на приобретение
+                    новых плантаций. 
+                </p>
+                <div class="course_block text-center">
+                    <span>Курс монет:</span>
+                    <p class="item_course">
+                        1 TRX = 25 <i><img src="../img/icon/ico_money.png" alt=""></i>
+                    </p>
+                </div>
+                <div class="text-center mb-5">
+                    <img src="../img/lk/st8.png" alt="">
+                </div>
+                <div class="inp_block text-center">
+                    <span>Количество TRX:</span>
+                    <input type="text" class="value_inp" value="100" id="input_buy">
+                    <br><span id="buy_error_field" style="display:none;color:red;">Недостаточно средств на балансе</span>
+                </div>
+                <button class="btn_modal" id="button_buy">
+                        Пополнить <span>2500</span> <i><img src="../img/icon/ico_money.png" alt=""></i>
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="modalContent" id="no_tronweb" style="display:none;">
+        <div class="content_history text-center">
+            <div class="close_btn" onclick="$('#no_tronweb').hide()"><img src="../img/close.png" alt=""></div>
+            <h3>АВТОРИЗУЙТЕСЬ</h3>
+            <div class="text-center">
+                <div class="text_modal">
+                Для игры на ПК требуется браузерное<br>
+                расширение <a href="https://chrome.google.com/webstore/detail/tronpay/gjdneabihbmcpobmfhcnljaojmgoihfk" target="_blank">TronPay</a> или <a href="https://chrome.google.com/webstore/detail/tronlink/ibnejdfjmmkpcnlpebklmnkoeoihofec" target="_blank">TronLink</a><br>
+                <br>
+                Авторизуйтесь пожалуйста в расширении.<br><br>
+                Для игры на смартфоне установите <a href="https://apple.co/2AW9iX2" target="_blank">TronWallet iOS</a> или <a href="https://goo.gl/aGVd5T" target="_blank">TronWallet Android</a> в зависимости от вашего смартфона.<br>
+                <br> Через встроенный браузер зайдите на https://tronland.online<br><br><br><br><br><br><br><br><br><br><br>
+                Если возникли вопросы с запуском Задайте их в нашем <a href="https://tele.click/tronland_ru_chat" target="_blank">Telegram</a> или <a href="https://discord.gg/8NR5qRp" target="_blank">Discord</a> чате.
+                </div>
+                <button class="btn_modal" id="auth_ok">
+                    OK
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <div class="modalContent" id="rise">
+        <div class="content_history text-center">
+            <div class="close_btn" onclick="$('#rise').hide()"><img src="../img/close.png" alt=""></div>
+            <h3>Покупка рисовой плантации</h3>
+            <div class="text-center">
+                <div class="tab_inf">
+                    Общий баланс<br>
+                    <span id="plant_user_balance_0" name="plant_user_balance">0</span> <i><img src="../img/icon/ico_money.png" alt=""></i> 
+                </div>
+                <p class="text_modal">
+                        Рис – очень ценный продукт для большей части населения нашей планеты и является основным продуктом питания от японских и тихоокеанских островов до арабских и африканских стран.
+                    </p>
+
+                <div class="text-center mb-5">
+                    <img src="../img/plant/ris.png" alt="">
+                </div>
+                <div class="inp_block text-center">
+                    <span>Количество плантаций:</span>
+                    <input type="text" class="value_inp" value="1" name="plant_input" id="plant_input_0">
+                    <br><span id="plant_error_field_0" style="display:none;color:red;">Недостаточно монет для покупки</span>
+                </div>
+                <button class="btn_modal" id="plant_button_0" name="button_plant_tron">
+                    Купить за <span>3.000</span><i><img src="../img/icon/ico_money.png" alt=""></i>
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="modalContent" id="phen">
+        <div class="content_history text-center">
+            <div class="close_btn" onclick="$('#phen').hide()"><img src="../img/close.png" alt=""></div>
+            <h3>Покупка поля пшеницы</h3>
+            <div class="text-center">
+                <div class="tab_inf">
+                    Общий баланс<br>
+                    <span id="plant_user_balance_1" name="plant_user_balance">0</span> <i><img src="../img/icon/ico_money.png" alt=""></i>
+                </div>
+                <p class="text_modal">
+                        Пшеница - одна из самых полезных зерновых культур. Помимо того, что она служит одним из основных источников пищи, так ещё и приносит огромную пользу нашему организму.
+                    </p>
+
+                <div class="text-center mb-5">
+                    <img src="../img/plant/phen.png" alt="">
+                </div>
+                <div class="inp_block text-center">
+                    <span>Количество плантаций:</span>
+                    <input type="text" class="value_inp" value="1" name="plant_input" id="plant_input_1">
+                    <br><span id="plant_error_field_1" style="display:none;color:red;">Недостаточно монет для покупки</span>
+                </div>
+                <button class="btn_modal" id="plant_button_1" name="button_plant_tron">
+                    Купить за <span>11.750</span><i><img src="../img/icon/ico_money.png" alt=""></i>
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="modalContent" id="orange">
+        <div class="content_history text-center">
+            <div class="close_btn" onclick="$('#orange').hide()"><img src="../img/close.png" alt=""></div>
+            <h3>Покупка поля апельсин</h3>
+            <div class="text-center">
+                <div class="tab_inf">
+                    Общий баланс<br>
+                    <span id="plant_user_balance_2" name="plant_user_balance">0</span> <i><img src="../img/icon/ico_money.png" alt=""></i>
+                </div>
+                <p class="text_modal">
+                        Апельсин — не только вкусный десерт, но и полезное средство борьбы с недомоганиями. Экзотический плод помогает обрести стройность, поддерживать молодость и красоту. 
+                </p>
+
+                <div class="text-center mb-5">
+                    <img src="../img/plant/orange.png" alt="">
+                </div>
+                <div class="inp_block text-center">
+                    <span>Количество плантаций:</span>
+                    <input type="text" class="value_inp" value="1" name="plant_input" id="plant_input_2">
+                    <br><span id="plant_error_field_2" style="display:none;color:red;">Недостаточно монет для покупки</span>
+                </div>
+                <button class="btn_modal" id="plant_button_2" name="button_plant_tron">
+                    Купить за <span>44.500</span><i><img src="../img/icon/ico_money.png" alt=""></i>
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="modalContent" id="tea">
+        <div class="content_history text-center">
+            <div class="close_btn" onclick="$('#tea').hide()"><img src="../img/close.png" alt=""></div>
+            <h3>Покупка плантации Чая</h3>
+            <div class="text-center">
+                <div class="tab_inf">
+                    Общий баланс<br>
+                    <span id="plant_user_balance_3" name="plant_user_balance">0</span> <i><img src="../img/icon/ico_money.png" alt=""></i>
+                </div>
+                <p class="text_modal">
+                        Чай — самый распространенный напиток на земном шаре, по общим подсчетам, он является основным для двух миллиардов людей на Земле. Чай — один из древнейших напитков. 
+                </p>
+                <div class="text-center mb-5">
+                    <img src="../img/plant/tea.png" alt="">
+                </div>
+                <div class="inp_block text-center">
+                    <span>Количество плантаций:</span>
+                    <input type="text" class="value_inp" value="1" name="plant_input" id="plant_input_3">
+                    <br><span id="plant_error_field_3" style="display:none;color:red;">Недостаточно монет для покупки</span>
+                </div>
+                <button class="btn_modal" id="plant_button_3" name="button_plant_tron">
+                    Купить за <span>155.000</span><i><img src="../img/icon/ico_money.png" alt=""></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="modalContent" id="vino">
+        <div class="content_history text-center">
+            <div class="close_btn" onclick="$('#vino').hide()"><img src="../img/close.png" alt=""></div>
+            <h3>Покупка плантации Винограда</h3>
+            <div class="text-center">
+                <div class="tab_inf">
+                    Общий баланс<br>
+                    <span id="plant_user_balance_4" name="plant_user_balance">0</span> <i><img src="../img/icon/ico_money.png" alt=""></i>
+                </div>
+                <p class="text_modal">
+                        Виноград - вьющееся кустарниковое растение со сладкими крупными ягодами, а также ягоды этого растения, идущие в пищу и на изготовление вина.
+                    </p>
+                <div class="text-center mb-5">
+                    <img src="../img/plant/vino.png" alt="">
+                </div>
+                <div class="inp_block text-center">
+                    <span>Количество плантаций:</span>
+                    <input type="text" class="value_inp" value="1" name="plant_input" id="plant_input_4">
+                    <br><span id="plant_error_field_4" style="display:none;color:red;">Недостаточно монет для покупки</span>
+                </div>
+                <button class="btn_modal" id="plant_button_4" name="button_plant_tron">
+                    Купить за <span>470.000</span><i><img src="../img/icon/ico_money.png" alt=""></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="modalContent" id="koki">
+        <div class="content_history text-center">
+            <div class="close_btn" onclick="$('#koki').hide()"><img src="../img/close.png" alt=""></div>
+            <h3>Покупка плантации Коки</h3>
+            <div class="text-center">
+                <div class="tab_inf">
+                    Общий баланс<br>
+                    <span id="plant_user_balance_5" name="plant_user_balance">0</span> <i><img src="../img/icon/ico_money.png" alt=""></i>
+                </div>
+                <p class="text_modal">
+                        Коки - Как вывод можно подчеркнуть, что жевание листьев коки оказывает благоприятное воздействие на человека при сознательном употреблении, о чем говорит тысячелетний опыт народов.
+                    </p>
+                <div class="text-center mb-5">
+                    <img src="../img/plant/koki.png" alt="">
+                </div>
+                <div class="inp_block text-center">
+                    <span>Количество плантаций:</span>
+                    <input type="text" class="value_inp" value="1" name="plant_input" id="plant_input_5">
+                    <br><span id="plant_error_field_5" style="display:none;color:red;">Недостаточно монет для покупки</span>
+                </div>
+                <button class="btn_modal" id="plant_button_5" name="button_plant_tron">
+                    Купить за <span>950.000</span><i><img src="../img/icon/ico_money.png" alt=""></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="modalContent" id="top">
+        <div class="content_top text-center">
+            <div class="close_btn" onclick="$('#top').hide()"><img src="../img/close.png" alt=""></div>
+            <h3>Топ лучших игроков</h3>
+            <div class="text-center">
+                <div class="tab_inf">
+                    Твое место<br>
+                    <span id="user_top_place">-</span> <i><img src="../img/icon/ico_top.png" alt=""></i>
+                </div>
+                <h4>
+                    <span>Трофейные места</span>
+                </h4>
+                <table class="tob_table" id="table_liders_top">
+                        <tr>
+                                <th class="text-center">Место</th>
+                                <th class="text-center"></th>
+                                <th class="text-right">Монет в час</th>
+                            </tr>
+                </table>
+                <h4>
+                    <span>Почетные места</span>
+                </h4>
+                <div class="table_scroll">
+                    <table class="tob_table" id="table_liders">
+                            <tr>
+                                    <th class="text-center">Место</th>
+                                    <th class="text-center"></th>
+                                    <th class="text-right">Монет в час</th>
+                                </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header class="header">
+        <div class="container">
+            <div class="top_panel">
+                <div class="btn_mobail_menu" onclick="$('.menu_block').slideToggle(500)"><img class="mw-100" src="../img/bg/burger.png" alt=""></div>
+                <div class="lang_block">
+                        <a class="item_lang active"><img src="../img/icon/ru.png" alt=""></a>
+                        <a href="../en/game.html" class="item_lang"><img src="../img/icon/en.png" alt=""></a>
+                        <a href="../de/game.html"  class="item_lang"><img src="../img/icon/de.png" alt=""></a>
+                        <a href="../cn/game.html"  class="item_lang"><img src="../img/icon/ch.png" alt=""></a>
+                        <a href="../pl/game.html"  class="item_lang"><img src="../img/icon/pl.png" alt=""></a>
+                    </div>
+                <ul class="menu_block">
+                    <li>
+                        <a href="/ru" class="item_menu"><img src="../img/main.png"/></a>
+                    </li>
+                   
+                    <li>
+                        <a class="item_menu" target="_blank">АККАУНТ: <span id="currentAccount">АВТОРИЗУЙТЕСЬ В TRONLINK ИЛИ TRONPAY</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-6 text-center">
+                <div class="title_stat_block">
+                    <span>
+                        общая<br>
+                        статистика
+                    </span>
+                </div>
+                <div class="block_statistick">
+                    <div class="row">
+                        <div class="col-12 col-lg-6">
+                            <div class="item_stat  text-center">
+                                <img src="../img/lk/st1.png" class="mw-100" alt="" height="70%">
+                                <div class="text_table_stat">
+                                    <p class="value_item" id="balance">0 TRX</p>
+                                    <span>Инвестировано</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <div class="item_stat  text-center">
+                                <img src="../img/lk/st2.png" class="mw-100" alt="" height="70%"> 
+                                <div class="text_table_stat">
+                                    <p class="value_item" id="totalPlayers">0</p>
+                                    <span>Игроков</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <div class="item_stat  text-center">
+                                <img src="../img/lk/st3.png" class="mw-100" alt="" height="70%">
+                                <div class="text_table_stat">
+                                    <p class="value_item" id="totalPlantation">0</p>
+                                    <span>Плантаций в игре</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <div class="item_stat  text-center">
+                                <img src="../img/lk/st4.png" class="mw-100" alt="" height="70%">
+                                <div class="text_table_stat">
+                                    <p class="value_item" id="totalPayout">0 TRX</p>
+                                    <span>Выплачено</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel_btn text-center">
+            <a class="modal_btn" id="button_top">
+                <i><img src="../img/icon/b1.png" alt=""></i> Топ игроков
+            </a>
+            <a class="modal_btn" id="button_transfers">
+                <i><img src="../img/icon/b2.png" alt=""></i> ПЕРЕВОДЫ
+            </a>
+        </div>
+            </div>
+            <div class="col-12 col-lg-6 text-center">
+                <div class="title_stat_block2">
+                    <span>
+                        ваш<br>
+                        аккаунт
+                    </span>
+                </div>
+                <div class="block_statistick2">
+                    <div class="row">
+                        <div class="col-12 col-lg-6">
+                            <div class="item_stat  text-center">
+                                <img src="../img/lk/st6.png" class="mw-100" alt="" > 
+                                <div class="text_table_stat">
+                                    <p class="value_item" id="user_coinsForBuy">0 <i><img src="../img/icon/ico_money.png" alt=""></i></p>
+                                    <span>
+                                        Казна</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <div class="item_stat  text-center">
+                                <img src="../img/lk/st5.png" class="mw-100" alt="">
+                                <div class="text_table_stat">
+                                    <p class="value_item" id="user_coinsForSell">0 <i><img src="../img/icon/ico_money.png" alt=""></i></p>
+                                    <span>
+                                        Свободные</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <div class="item_stat  text-center">
+                                <img src="../img/lk/st7.png" class="mw-100" alt="" height="70%">
+                                <div class="text_table_stat">
+                                    <p class="value_item" id="user_factories">0</p>
+                                    <span>
+                                        Усеяно плантаций</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <div class="item_stat  text-center">
+                                <img src="../img/lk/st8.png" class="mw-100" alt="">
+                                <div class="text_table_stat">
+                                    <p class="value_item" id="user_dividents">0 <i><img src="../img/icon/ico_money.png" alt=""></i></p>
+                                    <span>
+                                        Общий доход в час</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel_btn">
+          <!---  <a class="modal_btn" id="button_popol">
+                <i><img src="../img/icon/b1.png" alt=""></i> ПОПОЛНИТЬ
+            </a>
+            <a class="modal_btn" id="button_vivod">
+                <i><img src="../img/icon/b1.png" alt=""></i> ВЫВЕСТИ
+            </a>
+            -->
+        </div>
+    </div>
+ </div>
+        <div class="row">
+             <div class="col-12 col-lg-4">
+                <div class="item_game">
+                    <p class="proc">96% в месяц</p>
+                    <p class="name_plant">Рис</p>
+                    <div class="image_plant_game">
+                        <img src="../img/plant/ris.png" class="mw-100" alt="">
+                    </div>
+                    <div class="info_plant_block text-left">
+                        <p>
+                            <i><img src="../img/icon/p1.png" alt=""></i>Посажено: <span id="factory_count_0">0 шт</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p2.png" alt=""></i>Твой доход в час: <span id="factory_divident_0">0</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p2.png" alt=""></i>Доход в час: <span>4</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p3.png" alt=""></i>Стоимость: <span>3,000</span>
+                        </p>
+                    </div>
+                    <button class="btn_bue" id="factory_button_0" name="button_plant">
+                        <i><img src="../img/ico_bue.png" alt=""></i> Посадить
+                    </button>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="item_game">
+                    <p class="proc">98% в месяц</p>
+                    <p class="name_plant">Пшеница</p>
+                    <div class="image_plant_game">
+                        <img src="../img/plant/phen.png" class="mw-100" alt="">
+                    </div>
+                    <div class="info_plant_block text-left">
+                        <p>
+                            <i><img src="../img/icon/p1.png" alt=""></i>Посажено: <span id="factory_count_1">0 шт</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p2.png" alt=""></i>Твой доход в час: <span id="factory_divident_1">0</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p2.png" alt=""></i>Доход в час: <span>16</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p3.png" alt=""></i>Стоимость: <span>11,750</span>
+                        </p>
+                    </div>
+                    <button class="btn_bue" id="factory_button_1" name="button_plant">
+                        <i><img src="../img/ico_bue.png" alt=""></i> Посадить
+                    </button>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="item_game">
+                    <p class="proc">100% в месяц</p>
+                    <p class="name_plant">Апельсины</p>
+                    <div class="image_plant_game">
+                        <img src="../img/plant/orange.png" class="mw-100" alt="">
+                    </div>
+                    <div class="info_plant_block text-left">
+                        <p>
+                            <i><img src="../img/icon/p1.png" alt=""></i>Посажено: <span id="factory_count_2">0 шт</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p2.png" alt=""></i>Твой доход в час: <span id="factory_divident_2">0</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p2.png" alt=""></i>Доход в час: <span>62</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p3.png" alt=""></i>Стоимость: <span>44,500</span>
+                        </p>
+                    </div>
+                    <button class="btn_bue" id="factory_button_2" name="button_plant">
+                        <i><img src="../img/ico_bue.png" alt=""></i> Посадить
+                    </button>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="item_game">
+                    <p class="proc">102% в месяц</p>
+                    <p class="name_plant">Чай</p>
+                    <div class="image_plant_game">
+                        <img src="../img/plant/tea.png" class="mw-100" alt="">
+                    </div>
+                    <div class="info_plant_block text-left">
+                        <p>
+                            <i><img src="../img/icon/p1.png" alt=""></i>Посажено: <span id="factory_count_3">0 шт</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p2.png" alt=""></i>Твой доход в час: <span id="factory_divident_3">0</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p2.png" alt=""></i>Доход в час: <span>220</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p3.png" alt=""></i>Стоимость: <span>155,000</span>
+                        </p>
+                    </div>
+                    <button class="btn_bue" id="factory_button_3" name="button_plant">
+                        <i><img src="../img/ico_bue.png" alt=""></i> Посадить
+                    </button>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="item_game">
+                    <p class="proc">104% в месяц</p>
+                    <p class="name_plant">Виноград</p>
+                    <div class="image_plant_game">
+                        <img src="../img/plant/vino.png" class="mw-100" alt="">
+                    </div>
+                    <div class="info_plant_block text-left">
+                        <p>
+                            <i><img src="../img/icon/p1.png" alt=""></i>Посажено: <span id="factory_count_4">0 шт</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p2.png" alt=""></i>Твой доход в час: <span id="factory_divident_4">0</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p2.png" alt=""></i>Доход в час: <span>680</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p3.png" alt=""></i>Стоимость: <span>470,000</span>
+                        </p>
+                    </div>
+                    <button class="btn_bue" id="factory_button_4" name="button_plant">
+                        <i><img src="../img/ico_bue.png" alt=""></i> Посадить
+                    </button>
+                </div>
+            </div>
+           <div class="col-12 col-lg-4">
+                <div class="item_game">
+                    <p class="proc">106% в месяц</p>
+                    <p class="name_plant">Кусты Коки</p>
+                    <div class="image_plant_game">
+                        <img src="../img/plant/koki.png" class="mw-100" alt="">
+                    </div>
+                    <div class="info_plant_block text-left">
+                        <p>
+                            <i><img src="../img/icon/p1.png" alt=""></i>Посажено: <span id="factory_count_5">0 шт</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p2.png" alt=""></i>Твой доход в час: <span id="factory_divident_5">0</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p2.png" alt=""></i>Доход в час: <span>1,400</span>
+                        </p>
+                        <p>
+                            <i><img src="../img/icon/p3.png" alt=""></i>Стоимость: <span>950,000</span>
+                        </p>
+                    </div>
+                    <button class="btn_bue" id="factory_button_5" name="button_plant">
+                        <i><img src="../img/ico_bue.png" alt=""></i> Посадить
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer_content">
+                    <p class="copyright">
+                            <i class="mr-2"><img src="../img/icon/copyright.png" alt=""></i> Для игры требуется браузерное
+                            расширение <a href="https://chrome.google.com/webstore/detail/tronlink/ibnejdfjmmkpcnlpebklmnkoeoihofec" target="_blank">TronLink</a> или <a href="https://chrome.google.com/webstore/detail/tronpay/gjdneabihbmcpobmfhcnljaojmgoihfk" target="_blank">TronPay</a>    
+                    </p>
+                    <div class="social_block">
+                            <span>Контакты</span>
+                            <a href="https://tele.click/tronland_ru_chat" class="item_social" target="_blank"><img src="../img/icon/s1.png" alt=""></a>
+                            <a href="https://discord.gg/8NR5qRp" class="item_social" target="_blank"><img src="../img/icon/s2.png" alt=""></a>
+                            <a href="https://bitcointalk.org/index.php?topic=5123794.msg50277314" class="item_social" target="_blank"><img src="../img/icon/s3.png" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/bn.min.js"></script>
+    <script src="../js/tronweb.min.js"></script>
+    <script src="../js/tron.js"></script>
+</body>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-136147350-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-136147350-1');
+</script>
+
+</html>

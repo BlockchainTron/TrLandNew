@@ -1,0 +1,144 @@
+@media  screen and (max-width:1170px){
+    .advantages_image:before,.advantages_image:after{
+        display: none;
+    }
+    .lang_block {
+        position: absolute;
+        left: 50%;
+        top: 105px;
+        transform: translate(-50%,0);
+    }
+    .mb_bt{
+        margin-bottoM:30px;
+    }
+    .mobail_hidden{
+        display:none;
+    }
+    .header_main:after{
+        z-index: 1;
+    }
+    .title_main{
+        font-size:24px;
+    }
+    .block_info_bottom{
+        text-align:center;
+    }
+    .text_info_2{
+        font-size:15px;
+    }
+    .subtitle_text{
+        font-size:16px;
+    }
+    .game_page{
+        background-size: cover;
+    }
+    
+
+    .modal_btn{
+        width: 100%;
+        text-align: center;
+        margin: 0;
+        margin-bottom: 15px;
+
+    }
+    .panel_btn{
+        display: block;
+        margin-bottom:20px
+    }
+    .content_history{
+         padding: 25px 10px;
+    }
+    .content_faq{
+        background-size: cover;
+    }
+    .name_plant{
+        line-height: 46px;
+    }
+    .item_game{
+        width: 320px;
+        height: auto;
+        background-size: contain;
+        padding: 0 55px 0 40px;
+    }
+    .item_stat{
+        height:175px;
+    }
+    .image_plant_game {
+        min-height: 140px;
+        line-height: 140px;
+    }
+    .info_plant_block{
+        padding: 0;
+    }
+    .btn_bue{
+        position: relative;
+        left: auto;
+        width: 100%;
+        background-size: contain;
+        font-size: 16px;
+        bottom: -19px;
+        height: auto;
+    }
+    .menu_block{
+        width: 100%;
+        top: 92px;
+        left: 0;
+        position: absolute;
+        background: #a05e35;
+        text-align: center;
+        display: block;
+        padding: 20px 0;
+        z-index: 50;
+        height: auto;
+        line-height: 45px;
+        display: none;
+    }
+    .item_statistic{
+        width: 100%;
+    }
+    .list_statistic{
+        display: block;
+    }
+    .footer_content{
+        display: block;
+        text-align: center;
+    }
+    .copyright {
+        margin-bottom: 20px;
+    }
+    .logo_block{
+        margin-top: 165px;
+    }
+    .header{
+        background: url('../img/bg/mobail.png') no-repeat top center;
+        min-height: 92px;
+        line-height: 92px;
+    }
+    .lang_block {
+        position: absolute;
+        left: 10px;
+        top: -8px;
+        transform: translate(0,0);
+        z-index: 85;
+    }
+    .btn_mobail_menu{
+        display: block;
+        z-index: 80;
+    }
+    .item_menu{
+        border: 0;
+    }
+    .header_main:before,.header_main:after{
+        content: '';
+    }
+            .block_statistick2,.block_statistick{
+        background:url('../img/mb_stat.png') no-repeat top center;
+
+        width: 320px;
+        padding:75px 55px 0 55px;
+        height: auto;
+    }
+}
+@media  screen and (max-width:580px){
+
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>TRONLAND.online</title>
+
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Create your plantation, develop it and get cryptocurrency Tron every day!">
+    <meta name="keywords" content="tron, land, tron land, smart, contract, investment, throne, tron, coin, trx, game, strategy, earnings on the Internet, passive income, investors, investment fund, income, finance, freebies, simple earnings, how to make money on the Internet, rates, bet, bet, smart contract, cryptocurrency, bounty, bitcoin, bitcoin, money, easy money, mmm, mlm, dice2win, eosbet, mmm3eth, easy invest, iz invest, 333eth, gorgona, investment fund, financial pyramid">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="TRONLAND&#169; - economic strategy based on Tron Network blockchain">
+    <meta property="og:description" content="Create your plantation, develop it and get cryptocurrency Tron every day!">
+    <link rel="shortcut icon" href="./img/favico.ico" type="image/x-icon">
+
+    <meta http-equiv="refresh" content="1;url=./en/">
+    <script>
+
+        (function (factory) {
+
+            var locale;
+
+            if (navigator.languages && navigator.languages.length) {
+                // latest versions of Chrome and Firefox set this correctly
+                locale = navigator.languages[0]
+            } else if (navigator.userLanguage) {
+                // IE only
+                locale = navigator.userLanguage
+            } else {
+                // latest versions of Chrome, Firefox, and Safari set this correctly
+                locale = navigator.language
+            }
+
+            factory(function (config) {
+                var list = config.languages.list;
+
+                for (var i = 0; i < list.length; i++) {
+                    if ((new RegExp(list[i])).test(locale)) {
+                        config.onDetect(list[i]);
+                        return;
+                    }
+                }
+
+                config.onDetect(config.languages.byDefault);
+            });
+
+        }(function (root) {
+            window.langDetector = root;
+        }));
+
+        langDetector({
+            languages: {
+                list: ['en', 'ru', 'zh', 'de','pl',],
+                byDefault: 'en'
+            },
+            onDetect: function (lang) {
+                if (lang === 'zh') {
+                    lang = 'cn';
+                }
+                window.location.href = './' + lang + '/';
+            }
+        });
+
+    </script>
+</head>
+<body>
+If the page is not reloaded automatically, please follow the <a href="./en/">link</a>
+</body>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-136147350-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-136147350-1');
+</script>
+</html>
