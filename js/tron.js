@@ -1,7 +1,7 @@
 let CONTRACT_ADDRESS = "TBhgLbU2qhg2GcnuzteKuD9GK7uiTEQtPk";
 let CONTRACT_ADDRESS_2 = "TVxGy1RJrixzy9WUB1anFiZ9iLfyAHDz8D";
 let STATISTIC = "https://dappcall.com/statistic";
-let TOTAL_INVEST = "https://dappcall.com/total_invest";
+let TOTAL_INVEST = "https://dappcall.com:4141/total_invest";
 let nodeUrl = "https://api.trongrid.io";
 let currentAccount;
 let dividents = [4, 16, 62, 220, 680, 1400];
