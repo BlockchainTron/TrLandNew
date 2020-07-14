@@ -1,6 +1,6 @@
 let CONTRACT_ADDRESS = "TBhgLbU2qhg2GcnuzteKuD9GK7uiTEQtPk";
 let CONTRACT_ADDRESS_2 = "TVxGy1RJrixzy9WUB1anFiZ9iLfyAHDz8D";
-let STATISTIC = "https://dappcall.com/statistic";
+let STATISTIC = "https://dappcall.com:4141/statistic";
 let TOTAL_INVEST = "https://dappcall.com:4141/total_invest";
 let nodeUrl = "https://api.trongrid.io";
 let currentAccount;
@@ -84,6 +84,7 @@ function updateData(){
                 tronWeb.trx.getBalance(currentAccount).then(balance => {
                     user_balance = Math.floor(balance / Math.pow(10, 6));
                     $('#user_balance').html(user_balance);
+                    
                 });
                 
                 tronWebJS.contract().at(CONTRACT_ADDRESS_2).then(contract => {
