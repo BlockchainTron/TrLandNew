@@ -26,12 +26,14 @@ setInterval(function(){
 function updateData(){
     tronWebJS.trx.getBalance(CONTRACT_ADDRESS).then(balance => {
         balance = Math.floor(balance / Math.pow(10, 6));
-        
-        $.get(TOTAL_INVEST, function(withdraw) {
+           /*
+
+       $.get(TOTAL_INVEST, function(withdraw) {
             $('#balance').html(format_number(parseFloat(balance+withdraw.total).toFixed(0)) + ' TRX');
         }).fail(function() {
             $('#balance').html(format_number(balance) + ' TRX');    
-        });;
+        });; */
+
     });
     
     tronWebJS.contract().at(CONTRACT_ADDRESS).then(contract => {
