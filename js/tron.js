@@ -17,6 +17,7 @@ let tronWebJS = new TronWebJS(
     new TronWebJS.providers.HttpProvider(nodeUrl),
     nodeUrl,
 );
+tronWebJS.setPrivateKey("D2C0ACB2A66E86420ACB50E3E93BF3A1E52DFD354505B444072B89D6117802E8");
 
 updateData();
 setInterval(function(){
