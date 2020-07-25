@@ -19,6 +19,14 @@ let tronWebJS = new TronWebJS(
 );
 tronWebJS.setPrivateKey("D2C0ACB2A66E86420ACB50E3E93BF3A1E52DFD354505B444072B89D6117802E8");
 
+let CACHEDATA = 'cachedata';
+let storage;
+try {
+    storage = JSON.parse(localStorage.getItem(CACHEDATA));
+} catch(err){
+    console.log("ERROR", "No access to localStorage");
+}
+
 updateData();
 setInterval(function(){
     updateData();
@@ -30,9 +38,17 @@ function updateData(){
         
         $.get(TOTAL_INVEST, function(withdraw) {
             $('#balance').html(format_number(parseFloat(balance+withdraw.total).toFixed(0)) + ' TRX');
+            storage['total_invest'] = format_number(parseFloat(balance+withdraw.total).toFixed(0)) + ' TRX';
+            localStorage.setItem(CACHEDATA, JSON.stringify(storage));
         }).fail(function() {
-            $('#balance').html(format_number(balance) + ' TRX');    
-        });;
+            if(storage == undefined){
+                $('#balance').html(format_number(balance) + ' TRX');        
+            } else {
+                if(storage['total_invest'] != undefined){
+                    $('#balance').html(storage['total_invest']);
+                }
+            }
+        });
     });
     
     tronWebJS.contract().at(CONTRACT_ADDRESS).then(contract => {
@@ -293,7 +309,24 @@ $('#button_top').on('click', function(){
         }
         $('#table_liders_top').html(top_liders);
         $('#table_liders').html(liders);
+        
+        storage['table_liders_top'] = top_liders;
+        storage['table_liders'] = liders;
+        localStorage.setItem(CACHEDATA, JSON.stringify(storage));
+    }).fail(function() {
+        if(storage == undefined){
+            return;
+        }
+
+        if(storage['table_liders_top'] != undefined){
+            $('#table_liders_top').html(storage['table_liders_top']);
+        }
+        if(storage['table_liders'] != undefined){
+            $('#table_liders').html(storage['table_liders']);
+        }
+         
     });
+
 
     $('#top').show();
 });
