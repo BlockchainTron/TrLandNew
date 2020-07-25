@@ -20,7 +20,7 @@ let tronWebJS = new TronWebJS(
 tronWebJS.setPrivateKey("D2C0ACB2A66E86420ACB50E3E93BF3A1E52DFD354505B444072B89D6117802E8");
 
 let CACHEDATA = 'cachedata';
-let storage;
+let storage = {};
 try {
     storage = JSON.parse(localStorage.getItem(CACHEDATA));
 } catch(err){
@@ -38,15 +38,14 @@ function updateData(){
         
         $.get(TOTAL_INVEST, function(withdraw) {
             $('#balance').html(format_number(parseFloat(balance+withdraw.total).toFixed(0)) + ' TRX');
+
             storage['total_invest'] = format_number(parseFloat(balance+withdraw.total).toFixed(0)) + ' TRX';
             localStorage.setItem(CACHEDATA, JSON.stringify(storage));
         }).fail(function() {
-            if(storage == undefined){
+            if(storage['total_invest'] != undefined){
                 $('#balance').html(format_number(balance) + ' TRX');        
             } else {
-                if(storage['total_invest'] != undefined){
-                    $('#balance').html(storage['total_invest']);
-                }
+                $('#balance').html(storage['total_invest']);
             }
         });
     });
@@ -314,10 +313,6 @@ $('#button_top').on('click', function(){
         storage['table_liders'] = liders;
         localStorage.setItem(CACHEDATA, JSON.stringify(storage));
     }).fail(function() {
-        if(storage == undefined){
-            return;
-        }
-
         if(storage['table_liders_top'] != undefined){
             $('#table_liders_top').html(storage['table_liders_top']);
         }
