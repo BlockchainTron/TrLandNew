@@ -31,6 +31,7 @@ try {
 }
 
 updateData();
+getTopLeaders();
 setInterval(function(){
     updateData();
 }, 5000);
@@ -267,65 +268,7 @@ $('[name=button_plant_tron]').on('click', function(){
 });
 
 $('#button_top').on('click', function(){
-    $.getJSON(STATISTIC, function(data) {
-        let users = data['users'];
-        let sort_users = users.sort(function(a,b){ 
-            return b.dividents - a.dividents   
-        });
-        
-        let top_liders = $('#table_liders_top').html().split('</tr>')[0] + '</tr>';
-        let liders     = $('#table_liders').html().split('</tr>')[0] + '</tr>';
-        for(let i = 0; i < sort_users.length; i++){
-            if(i < 100){
-                if(i < 3){
-                    top_liders +=   '<tr>'+
-                                    '   <td class="text-center">'+
-                                    '       <img src="../img/t'+(i+1)+'.png" alt="">'+
-                                    '   </td>'+
-                                    '   <td class="text-center">'+
-                                    '       <a target="_blank" href="https://tronscan.org/#/address/'+sort_users[i].address+'">'+sort_users[i].address.substring(0,15)+'...</a>'+
-                                    '   </td>'+
-                                    '   <td class="text-right">'+
-                                    '       '+format_number(sort_users[i].dividents)+' <i><img src="../img/icon/ico_money.png" alt=""></i>'+
-                                    '   </td>'+
-                                    '</tr>';   
-                } else {
-                    liders +=       '<tr>'+
-                                    '   <td class="text-center">'+
-                                    '       <span class="num_top">'+
-                                    '           '+(i+1)+
-                                    '       </span>'+
-                                    '   </td>'+
-                                    '   <td class="text-center">'+
-                                    '       <a target="_blank" href="https://tronscan.org/#/address/'+sort_users[i].address+'">'+sort_users[i].address.substring(0,15)+'...</a>'+
-                                    '   </td>'+
-                                    '   <td class="text-right">'+
-                                    '       '+format_number(sort_users[i].dividents)+' <i><img src="../img/icon/ico_money.png" alt=""></i>'+
-                                    '   </td>'+
-                                    '</tr>';
-                }
-            }
-            if(sort_users[i].address == currentAccount){
-                $('#user_top_place').html((i+1));   
-            }
-        }
-        $('#table_liders_top').html(top_liders);
-        $('#table_liders').html(liders);
-        
-        storage['table_liders_top'] = top_liders;
-        storage['table_liders'] = liders;
-        localStorage.setItem(CACHEDATA, JSON.stringify(storage));
-    }).fail(function() {
-        if(storage['table_liders_top'] != undefined){
-            $('#table_liders_top').html(storage['table_liders_top']);
-        }
-        if(storage['table_liders'] != undefined){
-            $('#table_liders').html(storage['table_liders']);
-        }
-         
-    });
-
-
+    getTopLeaders();
     $('#top').show();
 });
 
@@ -384,6 +327,66 @@ $('#button_transfers').on('click', function(){
     });
     $('#history').show();
 });
+
+function getTopLeaders(){
+    $.getJSON(STATISTIC, function(data) {
+        let users = data['users'];
+        let sort_users = users.sort(function(a,b){ 
+            return b.dividents - a.dividents   
+        });
+        
+        let top_liders = $('#table_liders_top').html().split('</tr>')[0] + '</tr>';
+        let liders     = $('#table_liders').html().split('</tr>')[0] + '</tr>';
+        for(let i = 0; i < sort_users.length; i++){
+            if(i < 100){
+                if(i < 3){
+                    top_liders +=   '<tr>'+
+                                    '   <td class="text-center">'+
+                                    '       <img src="../img/t'+(i+1)+'.png" alt="">'+
+                                    '   </td>'+
+                                    '   <td class="text-center">'+
+                                    '       <a target="_blank" href="https://tronscan.org/#/address/'+sort_users[i].address+'">'+sort_users[i].address.substring(0,15)+'...</a>'+
+                                    '   </td>'+
+                                    '   <td class="text-right">'+
+                                    '       '+format_number(sort_users[i].dividents)+' <i><img src="../img/icon/ico_money.png" alt=""></i>'+
+                                    '   </td>'+
+                                    '</tr>';   
+                } else {
+                    liders +=       '<tr>'+
+                                    '   <td class="text-center">'+
+                                    '       <span class="num_top">'+
+                                    '           '+(i+1)+
+                                    '       </span>'+
+                                    '   </td>'+
+                                    '   <td class="text-center">'+
+                                    '       <a target="_blank" href="https://tronscan.org/#/address/'+sort_users[i].address+'">'+sort_users[i].address.substring(0,15)+'...</a>'+
+                                    '   </td>'+
+                                    '   <td class="text-right">'+
+                                    '       '+format_number(sort_users[i].dividents)+' <i><img src="../img/icon/ico_money.png" alt=""></i>'+
+                                    '   </td>'+
+                                    '</tr>';
+                }
+            }
+            if(sort_users[i].address == currentAccount){
+                $('#user_top_place').html((i+1));   
+            }
+        }
+        $('#table_liders_top').html(top_liders);
+        $('#table_liders').html(liders);
+        
+        storage['table_liders_top'] = top_liders;
+        storage['table_liders'] = liders;
+        localStorage.setItem(CACHEDATA, JSON.stringify(storage));
+    }).fail(function() {
+        if(storage['table_liders_top'] != undefined){
+            $('#table_liders_top').html(storage['table_liders_top']);
+        }
+        if(storage['table_liders'] != undefined){
+            $('#table_liders').html(storage['table_liders']);
+        }
+         
+    });
+}
 
 function format_number(number){
     if(number == undefined)
