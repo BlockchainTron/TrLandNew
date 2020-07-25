@@ -23,6 +23,9 @@ let CACHEDATA = 'cachedata';
 let storage = {};
 try {
     storage = JSON.parse(localStorage.getItem(CACHEDATA));
+    if(storage == null){
+        storage = {};
+    }
 } catch(err){
     console.log("ERROR", "No access to localStorage");
 }
@@ -42,7 +45,7 @@ function updateData(){
             storage['total_invest'] = format_number(parseFloat(balance+withdraw.total).toFixed(0)) + ' TRX';
             localStorage.setItem(CACHEDATA, JSON.stringify(storage));
         }).fail(function() {
-            if(storage['total_invest'] != undefined){
+            if(storage['total_invest'] == undefined){
                 $('#balance').html(format_number(balance) + ' TRX');        
             } else {
                 $('#balance').html(storage['total_invest']);
