@@ -1,5 +1,5 @@
-let CONTRACT_ADDRESS = "TK1mkc4EpuHy8YPA8zjV7NfH4Zfy9pJja9";
-let CONTRACT_ADDRESS_2 = "TT85vGttH7gVABgV2jSVByArtdkftPUbyE";
+let CONTRACT_ADDRESS = "TKHXmmNchBZREJiWr9cuXqNaLEijogE73n";
+let CONTRACT_ADDRESS_2 = "TPq7VZ2Co7yh2J5YxKdcEcT83B2UrFVZka";
 let STATISTIC = "https://dappcall.com/statistic";
 let TOTAL_INVEST = "https://dappcall.com/total_invest";
 let nodeUrl = "https://api.trongrid.io";
