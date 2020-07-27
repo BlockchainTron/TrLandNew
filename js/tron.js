@@ -40,10 +40,10 @@ function updateData(){
     tronWebJS.trx.getBalance(CONTRACT_ADDRESS).then(balance => {
         balance = Math.floor(balance / Math.pow(10, 6));
         
-        $.get(TOTAL_INVEST, function(withdraw) {
-            $('#balance').html(format_number(parseFloat(balance+withdraw.total).toFixed(0)) + ' TRX');
+        $.get(TOTAL_INVEST, function(deposit_sum) {
+            $('#balance').html(format_number(parseFloat(deposit_sum.total / Math.pow(10,6)).toFixed(0)) + ' TRX');
 
-            storage['total_invest'] = format_number(parseFloat(balance+withdraw.total).toFixed(0)) + ' TRX';
+            storage['total_invest'] = format_number(parseFloat(deposit_sum.total / Math.pow(10,6)).toFixed(0)) + ' TRX';
             localStorage.setItem(CACHEDATA, JSON.stringify(storage));
         }).fail(function() {
             if(storage['total_invest'] == undefined){
